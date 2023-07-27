@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>판매 정보</title>
+<script th:src="@{/js/jquery-3.6.0.js}"></script>
+</head>
+<body>
+	<h1>[ 판매 정보 ]</h1>
+
+	<table>
+		<tr>
+			<td>작성자</td>
+			<td>(작성자 아이디가 뜰 부분)</td>
+		</tr>
+		<tr>
+			<td>작성일</td>
+			<td>(작성일이 뜰 부분)</td>
+		</tr>
+		<tr>
+			<td>제목</td>
+			<td>(제목이 뜰 부분)</td>
+		</tr>
+		<tr>
+			<td>내용</td>
+			<td>(내용이 뜰 부분)</td>
+		</tr>
+		<tr>
+			<td>삭제 (내 글 일 때)</td>
+			<td>구매하기 (다른 사용자의 글을 볼 때)</td>
+		</tr>
+		</table>	
+			
+		<input type="text"><input type="button" value="확인">
+			
+		<!-- 댓글 구현하기 -->
+		<div id="listDiv"></div>
+	
+</body>
+</html>

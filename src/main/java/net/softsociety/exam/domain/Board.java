@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 /**
  * 게시글 정보
  */
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Board {
 	
 	int boardnum;

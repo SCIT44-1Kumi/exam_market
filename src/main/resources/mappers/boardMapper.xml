@@ -6,7 +6,18 @@
 
 <!--판매글 저장 -->
 <insert id="insertBoard" parameterType="Board">
-
+	insert into market_board (
+		boardnum,
+		memberid,
+		category,
+		title,
+		contents) 
+		values(
+		market_board_seq.nextvla,
+		#{memberid},
+		#{category},
+		#{title},
+		#{contents})
 </insert>
 
 

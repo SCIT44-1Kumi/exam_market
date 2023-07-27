@@ -7,5 +7,7 @@ import net.softsociety.exam.domain.Reply;
 
 public interface BoardService {
 
+	public void insertboard(Board b);
+
 
 }
