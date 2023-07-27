@@ -8,5 +8,6 @@ import lombok.NoArgsConstructor;
  * 게시글 정보
  */
 public class Board {
+		int a;
 	
 }
