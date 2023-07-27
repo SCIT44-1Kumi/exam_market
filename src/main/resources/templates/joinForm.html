@@ -40,6 +40,7 @@ function checkID() {
 
     return true; // 모든 입력이 유효하면 폼 제출
 }
+
 </script>
 
 </head>
@@ -47,6 +48,7 @@ function checkID() {
 	<h1>[ 회원가입 ]</h1>
 	
 		<form th:action="@{/member/joinForm}" method="post" onsubmit="return checkID()">
+
 			<table>
 			<tr>
 				<td>ID</td>
