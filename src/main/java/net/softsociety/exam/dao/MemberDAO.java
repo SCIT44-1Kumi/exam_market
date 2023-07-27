@@ -7,7 +7,14 @@ import net.softsociety.exam.domain.Member;
 /**
  * 회원정보 관련 매퍼
  */
-@Mapper
-public interface MemberDAO {
 
+/**
+ * 2023.07.27
+ * @author 수정작성
+ */
+@Mapper
+public interface MemberDAO
+{
+	//회원가입 정보 저장
+	public void joinForm(Member m);
 }

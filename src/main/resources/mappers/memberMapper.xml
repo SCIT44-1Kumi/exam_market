@@ -5,8 +5,9 @@
 <mapper namespace="net.softsociety.exam.dao.MemberDAO">
 
 <!-- 회원정보 저장 -->
-<insert id="insertMember" parameterType="Member">
-
-</insert>
+	<insert id="joinForm" parameterType="Member">
+	insert into market_member (memberid, memberpw, membername, phone)
+	values (#{memberid}, #{memberpw}, #{membername}, #{phone})
+	</insert>
 
 </mapper>
