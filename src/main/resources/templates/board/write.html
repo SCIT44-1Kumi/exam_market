@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>판매글 등록</title>
+<script th:src="@{/js/jquery-3.7.0.js}"></script>
+<script>
+	$(document).ready(function(){
+		$('#savebt').click(write);
+	});
+	
+	function write(){
+		$.ajax({
+			url:'insertboard',
+			type: 'post',
+			data: $('#write').serialize(),
+			success:function(){
+				$('#category').val('');
+				$('#title').val('');
+				$('#content').val('');
+				alert('글작성완료');
+			}
+			
+		})
+	}
+</script>
+</head>
+<body>
+	
+	<h1>[ 판매글 등록 ]</h1>
+	
+	<form id="write">
+		<input type="hidden" name="memberid" th:value="${memberid}">
+		<table>
+		<tr>
+			<td>카테고리</td>
+			<td>
+				<select name = "item" id="category">
+		            <option value = "computer">컴퓨터 및 주변기기</option>
+		            <option value = "camera">카메라</option>
+		            <option value = "car">자동차 용품</option>
+	            </select>
+	        </td>
+		</tr>
+		<tr>
+			<td>제목</td>
+			<td><input type="text" name="title" id="title"></td>
+		</tr>
+		<tr>
+			<td>내용</td>
+			<td><textarea class="write_contents" name="content"></textarea></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="button" value="저장" id="savebt"></td>
+		</tr>
+		</table>
+	</form>
+</body>
+</html>
