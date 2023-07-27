@@ -21,6 +21,12 @@ import net.softsociety.exam.service.BoardService;
 /**
  * 상품게시판 관련 콘트롤러
  */
+
+/**
+ * 20230727 
+ * @author user
+ *
+ */
 @Slf4j
 @RequestMapping("board")
 @Controller
