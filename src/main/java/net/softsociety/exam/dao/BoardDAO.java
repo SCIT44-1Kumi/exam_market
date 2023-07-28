@@ -14,6 +14,13 @@ import net.softsociety.exam.domain.Reply;
 @Mapper
 public interface BoardDAO {
 
-	int insertboard(Board b);
+	void insertboard(Board b);
 
+	/**
+	 * 2023.07.27
+	 * board.html에서 판매 정보를 띄우는 컨트롤러
+	 * @author 수정
+	 * @return ArrayList<Board>
+	 */
+	ArrayList<Board> boardlist(Board b);
 }
