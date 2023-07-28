@@ -18,41 +18,31 @@ import net.softsociety.exam.service.MemberService;
 
 /**
  * 2023.07.27
+ * 
  * @author 수정작성
  */
 
 @Slf4j
 @RequestMapping("member")
 @Controller
-public class MemberController
-{
+public class MemberController {
 	@Autowired
 	MemberService service;
-	
+
 	@GetMapping("join")
-	public String join()
-	{
+	public String join() {
 		return "joinForm";
 	}
-	
-	//회원가입 정보 저장
+
+	// 회원가입 정보 저장
 	@PostMapping("joinForm")
-	public String joinForm(Member m)
-	{
-		log.debug("{}",m);
+	public String joinForm(Member m) {
+		log.debug("새 멤버: {}", m);
 		service.joinForm(m);
 		return "home";
 	}
-	
-	//로그인 폼으로 이동
-	@GetMapping("login")
-	public String login()
-	{
-		return "loginForm";
-	}
-	
-	
 
+	// 로그인 폼으로 이동
 	@GetMapping("login")
 	public String login() {
 		return "loginForm";

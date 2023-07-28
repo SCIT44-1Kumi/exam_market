@@ -1,77 +1,87 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-<meta charset="UTF-8">
-<title>회원가입</title>
-<script th:src="@{/js/jquery-3.6.0.js}"></script>
-<style>
-</style>
+<html
+  xmlns:th="http://thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <head>
+    <meta charset="UTF-8" />
+    <title>회원가입</title>
+    <script th:src="@{/js/jquery-3.6.0.js}"></script>
+    <style></style>
 
-<script>
-function checkID() {
-    // ID 입력 체크
-    var id = document.getElementById("memberid").value;
-    if (id.length < 3 || id.length > 10) {
-        alert("ID는 3~10자로 입력하세요.");
-        return false; // 입력이 유효하지 않으면 폼 제출을 중단
-    }
+    <script>
+      $(document).ready(() => {
+        $("#joinForm").submit(checkData);
+        $("#rewrite").click(rewrite);
+      });
 
-    // 비밀번호 입력 체크
-    var pw = document.getElementById("memberpw").value;
-    if (pw.length < 3 || pw.length > 10) {
-        alert("비밀번호는 3~10자로 입력하세요.");
-        return false; // 입력이 유효하지 않으면 폼 제출을 중단
-    }
+      function rewrite() {
+        $("#memberid").val("");
+        $("#memberpw").val("");
+        $("#membername").val("");
+        $("#phone").val("");
+      }
 
-    // 이름 입력 체크
-    var name = document.getElementById("membername").value;
-    if (!name) {
-        alert("이름을 입력하세요.");
-        return false; // 입력이 유효하지 않으면 폼 제출을 중단
-    }
+      // 20230728
+      // form data 체크 by 나휘선
+      function checkData() {
+        let flag = true;
+        //ID 입력 체크
+        const id = $("#memberid").val();
+        if (id.length < 3 || id.length > 10) {
+          alert("ID는 3~10자로 입력하세요.");
+          flag = false;
+        }
 
-    // 전화번호 입력 체크
-    var phone = document.getElementById("phone").value;
-    if (!phone) {
-        alert("전화번호를 입력하세요.");
-        return false; // 입력이 유효하지 않으면 폼 제출을 중단
-    }
+        //비밀번호 입력 체크
+        const pw = $("#memberpw").val();
+        if (pw.length < 3 || pw.length > 10) {
+          alert("비밀번호는 3~10자로 입력하세요.");
+          flag = false;
+        }
 
-    return true; // 모든 입력이 유효하면 폼 제출
-}
+        //이름 입력 체크
+        if (!$("#membername").val()) {
+          alert("이름을 입력하세요.");
+          flag = false;
+        }
 
-</script>
+        //전화번호 입력 체크
+        if (!$("#phone").val()) {
+          alert("전화번호를 입력하세요.");
+          flag = false;
+        }
+        return flag;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>[ 회원가입 ]</h1>
 
-</head>
-<body>
-	<h1>[ 회원가입 ]</h1>
-	
-		<form th:action="@{/member/joinForm}" method="post" onsubmit="return checkID()">
-
-			<table>
-			<tr>
-				<td>ID</td>
-				<td><input type="text" name="memberid" id="memberid"></td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="memberpw" id="memberpw"></td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td><input type="text" name="membername" id="membername"></td>
-			</tr>
-			<tr>
-				<td>전화번호</td>
-				<td><input type="text" name="phone" id="phone"></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="회원가입">
-					<input type="button" value="다시쓰기">
-				</td>
-			</tr>
-			</table>
-		</form>
-</body>
+    <form th:action="@{/member/joinForm}" method="post" id="joinForm">
+      <table>
+        <tr>
+          <td>ID</td>
+          <td><input type="text" name="memberid" id="memberid" /></td>
+        </tr>
+        <tr>
+          <td>비밀번호</td>
+          <td><input type="password" name="memberpw" id="memberpw" /></td>
+        </tr>
+        <tr>
+          <td>이름</td>
+          <td><input type="text" name="membername" id="membername" /></td>
+        </tr>
+        <tr>
+          <td>전화번호</td>
+          <td><input type="text" name="phone" id="phone" /></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" id="submit" value="회원가입" />
+            <input type="button" id="rewrite" value="다시쓰기" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
 </html>
