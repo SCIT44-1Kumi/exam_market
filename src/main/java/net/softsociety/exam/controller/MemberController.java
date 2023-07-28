@@ -50,12 +50,5 @@ public class MemberController
 	{
 		return "loginForm";
 	}
-	
-	
-
-	@GetMapping("login")
-	public String login() {
-		return "loginForm";
-	}
 
 }
