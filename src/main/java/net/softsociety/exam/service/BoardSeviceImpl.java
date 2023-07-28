@@ -22,8 +22,21 @@ public class BoardSeviceImpl implements BoardService {
 	BoardDAO dao;
 	
 	@Override
-	public void insertboard(Board b) {
-		dao.insertboard(b);
+	public int insertboard(Board b) {
+		int n = dao.insertboard(b);
+		return n;
+	}
+
+	/**
+	 * 2023.07.27
+	 * board.html에서 판매 정보를 띄우는 컨트롤러
+	 * @author 수정
+	 * @return ArrayList<Board>
+	 */
+	@Override
+	public ArrayList<Board> boardlist(Board b) {
+		ArrayList<Board> boardlist = dao.boardlist(b);
+		return boardlist;
 	}
 
 }

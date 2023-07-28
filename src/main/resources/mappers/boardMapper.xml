@@ -13,13 +13,17 @@
 		title,
 		contents) 
 		values(
-		market_board_seq.nextvla,
+		market_board_seq.nextval,
 		#{memberid},
 		#{category},
 		#{title},
 		#{contents})
 </insert>
 
+<!-- Board.html의 판매 정보를 불러오는 SQL -->
+<select id="boardlist" parameterType="Board" resultType="Board">
+	select boardnum, memberid, title from market_board ORDER BY boardnum DESC
+</select>
 
 
 </mapper>

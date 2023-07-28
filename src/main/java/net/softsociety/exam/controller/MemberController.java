@@ -50,12 +50,9 @@ public class MemberController
 	{
 		return "loginForm";
 	}
+<<<<<<< HEAD
 	
-	
-
-	@GetMapping("login")
-	public String login() {
-		return "loginForm";
-	}
+=======
+>>>>>>> aab9b893c12aa7a7054a1bf0f7175be9c8fe06d2
 
 }
