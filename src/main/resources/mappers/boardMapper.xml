@@ -25,5 +25,19 @@
 	select boardnum, memberid, title from market_board ORDER BY boardnum DESC
 </select>
 
+<!-- Board의 글 제목을 클릭하면 내용을 읽어오는 SQL -->
+<select id="read" parameterType="int" resultType="Board">
+	select * from market_board where boardnum = #{boardnum}
+</select>
+
+<!-- Board의 글을 삭제하는 SQL -->
+<delete id="deleteBoard" parameterType="Board">
+	delete from market_board where boardnum = #{boardnum} and memberid = #{memberid}
+</delete>
+
+<!-- Board의 글에서 구매하기를 눌렀을 때 SQL -->
+<update id="buyBoard" parameterType="Board">
+	update market_board set soldout = 'Y', buyerid = #{memberid} where boardnum = #{boardnum}
+</update>
 
 </mapper>

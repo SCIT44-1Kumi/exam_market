@@ -27,6 +27,7 @@ import net.softsociety.exam.service.BoardService;
  * @author user
  *
  */
+
 @Slf4j
 @RequestMapping("board")
 @Controller
@@ -50,6 +51,62 @@ public class BoardController {
 		return "board/board";
 	}
 	
+	/**
+	 * 2023.07.28
+	 * board.html의 글제목을 클릭하면 내용을 읽는 컨트롤러
+	 * @author 수정
+	 * @param Model m, 
+	 * @param @RequestParam(name="boardnum", defaultValue = "0") int boardnum
+	 * @return Board
+	 */
+	@GetMapping("read")
+	public String read(	Model m,
+						@RequestParam(name="boardnum", defaultValue = "0") int boardnum)
+	{
+		log.debug("Clicked boardnum: {}", boardnum);
+		if (boardnum == 0) return "redirect:/board/list";
+		             
+		Board b = service.read(boardnum);
+		log.debug("{}",b);
+		m.addAttribute("read", b);
+		log.debug("{}",b);
+		
+		return "board/read";
+	}
+	
+	@GetMapping("deleteBoard")
+	public String deleteBoard(@RequestParam(name="boardnum", defaultValue = "0") int boardnum
+							, @AuthenticationPrincipal UserDetails user)
+	{
+		Board b = new Board();				//아무것도 안 든 새로운 보드를 생성
+		b.setMemberid(user.getUsername());	//보드 안에 유저 아이디 넣음
+		b.setBoardnum(boardnum);	//보드 안에 글 번호 넣음
+		log.debug("{}",b);
+		int i = service.deleteBoard(b);	
+		if (i == 0)
+		{
+			log.debug("{삭제 실패}");
+		}
+		if (i == 1)
+		{
+			log.debug("{삭제 성공}");
+		}
+			return "redirect:/board/board";
+			
+	}
+	
+	@GetMapping("buyBoard")
+	public String buyBoard(	@AuthenticationPrincipal UserDetails user
+							, @RequestParam(name="boardnum", defaultValue = "0") int boardnum)
+	{
+		Board b = new Board();				//아무것도 안 든 새로운 보드를 생성
+		b.setMemberid(user.getUsername());	//보드 안에 유저 아이디 넣음
+		b.setBoardnum(boardnum);	//보드 안에 글 번호 넣음
+		log.debug("{}",b);
+		service.buyBoard(b);
+		return "redirect:/board/board";
+	}
+
 	@GetMapping("search")
 	public String search() {
 		return "board/search";

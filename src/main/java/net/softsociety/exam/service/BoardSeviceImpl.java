@@ -38,4 +38,37 @@ public class BoardSeviceImpl implements BoardService {
 		return boardlist;
 	}
 
+	/**
+	 * 2023.07.28
+	 * board.html의 글제목을 클릭하면 내용을 읽는 컨트롤러
+	 * @author 수정
+	 * @return Board
+	 */
+	@Override
+	public Board read(int boardnum) {
+		Board b = dao.read(boardnum);
+		return b;
+	}
+
+	/**
+	 * 2023.07.27
+	 * board.html의 글을 삭제하는 컨트롤러
+	 * @param Board b
+	 * @return int
+	 */
+	@Override
+	public int deleteBoard(Board b) {
+		int i = dao.deleteBoard(b);
+		return i;
+	}
+
+	@Override
+	public int buyBoard(Board b) {
+		log.debug("service:{}",b);
+		int i = dao.buyBoard(b);
+		return i;
+	}
+	
+	
+
 }
