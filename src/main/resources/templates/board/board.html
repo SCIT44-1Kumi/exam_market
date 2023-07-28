@@ -7,26 +7,7 @@
 <script th:src="@{/js/jquery-3.6.0.js}"></script>
 </head>
 <body>
-<<<<<<< HEAD
-   <h1>[ 판매 정보 게시판 ]</h1>
-   
-   <p sec:authorize="isAuthenticated()">
-   <a th:href="@{/board/write}">판매글 등록</a>
-   </p>
-   
-   <table>
-      <tr>
-         <td>번호</td>
-         <td>제목</td>
-         <td>작성자</td>
-      </tr>
-      <tr th:each="board : ${boardlist}">
-         <td th:text="${board.boardnum}"></td>
-         <td th:text="${board.title}"></td>
-         <td th:text="${board.memberid}"></td>
-      </tr>
-   </table>
-=======
+
 	<h1>[ 판매 정보 게시판 ]</h1>
 	
 	<p sec:authorize="isAuthenticated()">
@@ -45,6 +26,6 @@
 			<td th:text="${board.memberid}"></td>
 		</tr>
 	</table>
->>>>>>> aab9b893c12aa7a7054a1bf0f7175be9c8fe06d2
+
 </body>
 </html>

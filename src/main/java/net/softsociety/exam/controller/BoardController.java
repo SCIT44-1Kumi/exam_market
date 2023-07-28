@@ -80,13 +80,8 @@ public class BoardController {
 	 * 게시글 작성 확인 필요 (로그인이랑 조회 완성후 확인)
 	 */
 	@ResponseBody
-<<<<<<< HEAD
 	@PostMapping("insert")
-	public String insertboard(Board b, @AuthenticationPrincipal UserDetails user) {
-=======
-	@PostMapping("insertboard")
 	public void insertboard(Board b, @AuthenticationPrincipal UserDetails user) {
->>>>>>> aab9b893c12aa7a7054a1bf0f7175be9c8fe06d2
 		b.setMemberid(user.getUsername());
 		service.insertboard(b);
 		return "redirect:/board/board";
